@@ -1,0 +1,15 @@
+- name: Modify apache SSLCertificateFile
+  lineinfile:
+    path: /etc/apache2/sites-available/default-ssl.conf
+    regexp: "^\\s*SSLCertificateFile"
+    line: "SSLCertificateFile /etc/letsencrypt/live/{{ host_name }}/fullchain.pem"
+    backrefs: true
+- name: Modify apache SSLCertificateKeyFile
+  lineinfile:
+    path: /etc/apache2/sites-available/default-ssl.conf
+    regexp: "^\\s*SSLCertificateKeyFile"
+    line: "SSLCertificateKeyFile /etc/letsencrypt/live/{{ host_name }}/privkey.pem"
+    backrefs: true
+- name: Enable default-ssl site
+  command: sudo a2ensite default-ssl
+  notify: Restart Apache

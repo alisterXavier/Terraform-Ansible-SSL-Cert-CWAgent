@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  become: true
+  vars_files:
+    - ./variable/variables.yml
+  tasks:
+    - import_tasks: ./tasks/certbot.yml
+    - import_tasks: ./tasks/apache.yml
+    - import_tasks: ./tasks/cloudwatch.yml
+  handlers:
+    - import_tasks: ./handler/main.yml

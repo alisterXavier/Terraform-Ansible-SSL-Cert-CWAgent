@@ -1,0 +1,6 @@
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+- name: Start Cloudwatch
+  command: /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file://opt/aws/amazon-cloudwatch-agent/bin/config.json -s

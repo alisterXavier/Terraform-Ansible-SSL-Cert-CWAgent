@@ -1,0 +1,6 @@
+- name: Register certbot
+  shell: sudo certbot -n register --agree-tos --email alisterxsequeira1@gmail.com
+- name: "Get certificate"
+  command: sudo certbot --apache certonly -d {{ host_name }}
+  args:
+    creates: /etc/letsencrypt/live/{{ host_name }}
