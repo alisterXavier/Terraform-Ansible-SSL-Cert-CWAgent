@@ -1,5 +1,5 @@
 - name: Register certbot
-  shell: sudo certbot -n register --agree-tos --email alisterxsequeira1@gmail.com
+  shell: sudo certbot -n register --agree-tos {{ email }}
 - name: "Get certificate"
   command: sudo certbot --apache certonly -d {{ host_name }}
   args:

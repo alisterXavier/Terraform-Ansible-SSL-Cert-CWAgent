@@ -26,7 +26,5 @@ echo "ansible ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers > /dev/null
 
 sed -i 's/^\s*#\?\s*PasswordAuthentication\s\+.*/PasswordAuthentication yes/' "/etc/ssh/sshd_config.d/60-cloudimg-settings.conf"
 
-# sed -i 's/^\s*#\?\s*PasswordAuthentication\s\+.*/PasswordAuthentication no/' "/etc/ssh/sshd_config.d/60-cloudimg-settings.conf" |
-
 systemctl restart ssh
 systemctl enable ssh
